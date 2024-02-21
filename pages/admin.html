@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script src="/static/htmx.min.js"></script>
+        <link rel="stylesheet" href="/static/iconoir.css" />
+    </head>
+    <body class="w-screen h-screen m-0 overflow-hidden">
+        <div class="w-full h-full flex flex-col items-center">
+            {% block section %}
+            <div class="w-fit h-fit">
+                <label>Users:</label>
+                <div class="flex flex-col">
+                    {% for user in users %}
+                    <div class="group rounded-lg p-3 flex flex-row">
+                        <img></div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div>
+            </div>
+            {% endblock %}
+        </div>
+    </body>
+</html>
