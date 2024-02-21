@@ -1,4 +1,7 @@
 use actix_web::{get, web, HttpResponse, post, put, delete};
+use minijinja::context;
+
+use crate::{models::{Account, AccountRequest}, AppState};
 
 pub fn config(cfg: &mut web::ServiceConfig) {
     cfg.service(user_management)
@@ -8,13 +11,16 @@ pub fn config(cfg: &mut web::ServiceConfig) {
 }
 
 #[get("/users")]
-async fn user_management() -> HttpResponse {
-    HttpResponse::Ok().finish()
+async fn user_management(app_state: web::Data<AppState>) -> HttpResponse {
+    let conn = app_state.pool.get().unwrap();
+    let users = Account::get_many(&conn, AccountRequest::default()).unwrap();
+    app_state.render_template("admin.html", context! { users => users })
 }
 
-#[post("/user")]
+#[post("/users")]
 async fn update_user() -> HttpResponse {
-    HttpResponse::Ok().finish()
+
+    HttpResponse::Ok().insert_header(("HX-Reswap", "none")).finish()
 }
 
 #[put("/user")]
@@ -23,7 +29,8 @@ async fn create_user() -> HttpResponse {
 }
 
 
-#[delete("/user/{user_id}")]
+#[delete("/user/{username}")]
 async fn delete_user() -> HttpResponse {
+
     HttpResponse::Ok().finish()
 }
