@@ -17,5 +17,5 @@ async fn display_page(app_state: web::Data<AppState>, req: HttpRequest) -> HttpR
     let full_path = req.path().to_string();
     let file_path = &full_path[7..];
 
-    app_state.render_template("files.html", context! {});
+    app_state.render_template("files.html", context! {})
 }

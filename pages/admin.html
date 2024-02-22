@@ -7,6 +7,9 @@
         <link rel="stylesheet" href="/static/tailwind.css" />
     </head>
     <body class="w-screen h-screen m-0 overflow-hidden bg-slate-900 text-white p-4">
+        <div class="fixed bottom-0 left-0 right-0">
+            <div id="alert-container" class="absolute bottom-0 w-full flex flex-col justify-end gap-2 p-4"></div>
+        </div>
         <div class="w-full h-full flex flex-col items-center">
             {% block section %}
             <div class="w-fit h-fit bg-slate-800 rounded-lg p-4">
