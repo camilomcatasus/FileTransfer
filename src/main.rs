@@ -1,12 +1,14 @@
 mod models;
 mod admin;
+mod utils;
+mod files;
 
 use actix_files as fs;
 use minijinja::{value::Value, path_loader, Environment};
 use actix_web::{
     web::{self, scope}, 
     App, HttpServer, HttpResponse,
-    http::header::ContentType,
+    http::header::ContentType, HttpResponseBuilder,
     
 };
 use r2d2_sqlite::SqliteConnectionManager;
@@ -22,6 +24,14 @@ impl AppState {
         let tmpl = self.env.get_template(name).unwrap();
         let rv = tmpl.render(ctx).unwrap();
         HttpResponse::Ok()
+            .content_type(ContentType::html())
+            .body(rv)
+    }
+
+    pub fn render_incomplete(&self, res: &mut HttpResponseBuilder, name: &str, ctx: Value) -> HttpResponse {
+        let tmpl = self.env.get_template(name).unwrap();
+        let rv = tmpl.render(ctx).unwrap();
+        res 
             .content_type(ContentType::html())
             .body(rv)
     }

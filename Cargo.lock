@@ -3,23 +3,6 @@
 version = 3
 
 [[package]]
-name = "FileTransfer"
-version = "0.1.0"
-dependencies = [
- "actix-files",
- "actix-web",
- "anyhow",
- "bcrypt",
- "database_macros",
- "minijinja",
- "r2d2",
- "r2d2_sqlite",
- "rusqlite",
- "serde",
- "tokio",
-]
-
-[[package]]
 name = "actix-codec"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -537,6 +520,23 @@ name = "fallible-streaming-iterator"
 version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7360491ce676a36bf9bb3c56c1aa791658183a54d2744120f27285738d90465a"
+
+[[package]]
+name = "file_transfer"
+version = "0.1.0"
+dependencies = [
+ "actix-files",
+ "actix-web",
+ "anyhow",
+ "bcrypt",
+ "database_macros",
+ "minijinja",
+ "r2d2",
+ "r2d2_sqlite",
+ "rusqlite",
+ "serde",
+ "tokio",
+]
 
 [[package]]
 name = "flate2"

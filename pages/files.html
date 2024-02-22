@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script src="/static/htmx.min.js"></script>
+        <script src="/static/files.js"></script>
+        <link rel="stylesheet" href="/static/iconoir.css" />
+        <link rel="stylesheet" href="/static/tailwind.css" />
+    </head>
+    <body class="w-screen h-screen m-0 overflow-hidden dark:bg-slate-900 text-white p-4">
+        <div id="search" class="w-full h-fit relative px-4 py-2">
+            <input 
+                type="text" 
+                class="w-full py-1 px-2 rounded-md" 
+                hx-trigger="changed"
+                hx-target
+                placeholder="Search..."/>
+            <div class="-top-full">
+            </div>
+        </div>
+
+    </body>
+</html>
